@@ -1,0 +1,13 @@
+
+// kernel/vokernel.c
+#include "vokernel.h"
+
+void kernel_main() {
+    char *video_memory = (char *) 0xB8000;
+    const char *msg = "Kernel Started";
+
+    for (int i = 0; msg[i] != '\0'; ++i) {
+        video_memory[i * 2] = msg[i];        // character
+        video_memory[i * 2 + 1] = 0x07;      // attribute: light grey on black
+    }
+}
